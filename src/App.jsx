@@ -4,10 +4,16 @@ import Navigation from './components/Navigation/Navigation'
 import styles from "./styles.module.scss";
 import { callAPI } from "./domain/api";
 import MoreRecipes from './components/MoreRecipes/MoreRecipes';
+import MealCard from './components/MealCard/MealCard';
+import useLocalStorage from './hooks/useLocalStorage';
+import { useNavigate } from 'react-router-dom';
+import Favorite from './components/Favorite/Favorite';
 
 function App() {
   const [navChosen, setNavChosen] = useState("Beef");
   const [meals, setMeals] = useState([]);
+  const [favorites, setFavorites] = useLocalStorage("favorites", []);
+  const navigate = useNavigate();
   console.log(navChosen);
 
   const fetchMeals = async() => {
@@ -24,7 +30,6 @@ function App() {
 
       // Step 3: Wait for all meal requests to complete and store the data
       const mealDetails = await Promise.all(mealPromises);
-      console.log(mealDetails);
       setMeals(mealDetails);
     } catch(error) {
       console.error(error);
@@ -40,9 +45,23 @@ function App() {
 
   return (
     <main>
-      <h1>Delicacy</h1>
+      <h1 onClick={() => navigate("/")}>Delicacy</h1>
       <Navigation navChosen={navChosen} setNavChosen={setNavChosen} />
-      <MoreRecipes />
+      {navChosen === "Favorite" ? (<Favorite favorites={favorites} setFavorites={setFavorites} />) : (
+        <>
+          <div className={styles.meals_list}>
+            <div className={styles.meals}>
+              {meals.map((meal) => (
+                <MealCard 
+                  key={meal.idMeal} meal={meal} favorites={favorites} 
+                  setFavorites={setFavorites} inDetailPage={false} 
+                />
+              ))}
+            </div>
+          </div>
+          <MoreRecipes />
+        </>
+      )}
     </main>
   )
 }

@@ -16,5 +16,34 @@ main {
   h1 {
     text-align: left;
     margin-left: 2rem;
+    cursor: pointer;
+  }
+
+  .meals_list {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-top: 1rem;
+    overflow-x: scroll;
+    white-space: nowrap;
+  
+    .meals {
+      display: inline-flex;
+      gap: 16rem;
+      // overflow-x: auto;
+    }
+  }
+
+  .meals_list::-webkit-scrollbar {
+    height: 5px;
+  }
+  
+  .meals_list::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.6); 
+      border-radius: 1px;
+  }
+  
+  .meals_list::-webkit-scrollbar-thumb {
+      border-radius: 1px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8); 
   }
 }

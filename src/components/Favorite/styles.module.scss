@@ -1,0 +1,101 @@
+*::-webkit-scrollbar {
+  width: 2px;
+}
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 1px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 1px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.favorite {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 5rem;
+  column-gap: 2rem;
+  justify-content: center;
+  margin: 5rem 4rem;
+
+  .card {
+    width: 13rem;
+    height: 11rem;
+    border: 4px solid white;
+    border-radius: 6px;
+    background-color: #f0f7ff;
+    box-shadow: 0 0 5px 0 rgba(127, 127, 127, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .card_image {
+      position: relative;
+      z-index: 1;
+      top: -30%;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      border: 1px solid red;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 0.1rem solid white;
+        object-fit: cover;
+      }
+    } 
+
+    .meal_name {
+      // TODO: Know why need to use margin-top
+      margin-top: -2rem;
+      padding: 0 0.5rem;
+      text-align: center;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 700;
+      height: 3rem;
+      overflow-y: auto;
+      cursor: pointer;
+    }
+
+    .btn {
+      position: absolute;
+      bottom: 0.5rem;
+      width: 8rem;
+      height: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 5px;
+      border: 2px solid #408EBA;
+      font-size: 10px;
+      font-weight: 500;
+      color: #408EBA;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #408dba3a;
+    }
+
+    .meal_name::-webkit-scrollbar {
+      width: 2px;
+    }
+    
+    .meal_name::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+        border-radius: 1px;
+    }
+    
+    .meal_name::-webkit-scrollbar-thumb {
+        border-radius: 1px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    }
+  }
+}

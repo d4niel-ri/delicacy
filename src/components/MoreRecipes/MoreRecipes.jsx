@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { callAPI } from "../../domain/api";
-import Card from '@mui/material/Card';
 import styles from "./styles.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const MoreRecipes = () => {
   const [randomMeals, setRandomMeals] = useState([]);
+  const navigate = useNavigate();
 
   // Function to fetch a random meal
   const fetchRandomMeal = async () => {
@@ -27,6 +28,8 @@ const MoreRecipes = () => {
 
   useEffect(() => {
     fetchFiveRandomMeals();
+
+    return () => setRandomMeals([]);
   }, []);
 
   console.log(randomMeals);
@@ -36,12 +39,15 @@ const MoreRecipes = () => {
       <h3>More Recipes</h3>
       <div className={styles.recipes}>
         {randomMeals.map((randomMeal) => (
-          <Card key={randomMeal.idMeal} className={styles.card}>
+          <div key={randomMeal.idMeal} 
+            className={styles.card} 
+            onClick={() => navigate(`/detail/${randomMeal.strMeal}`)}
+          >
             <div className={styles.card_image}>
-              <img src={`${randomMeal.strMealThumb}/preview`} alt={randomMeal.strMeal} />
-              <p className={styles.meal_name}>{randomMeal.strMeal}</p>
+              <img src={randomMeal.strMealThumb} alt={randomMeal.strMeal} />
             </div>
-          </Card>
+            <p className={styles.meal_name}>{randomMeal.strMeal}</p>
+          </div>
         ))}
       </div>
     </div>

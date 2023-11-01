@@ -1,0 +1,28 @@
+// Reset
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 100vw;
+  min-height: 100vh;
+  max-height: 100vh;
+  position: relative;
+  background: #F0F7FF;
+  color: #000;
+
+  h1 {
+    text-align: left;
+    margin-left: 2rem;
+    cursor: pointer;
+  }
+
+  .detail {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    margin-left: -10%;
+  }
+}
