@@ -1,0 +1,20 @@
+nav {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  margin-left: 4rem;
+  margin-top: 2rem;
+  color: #969696; 
+
+  div {
+    cursor:pointer;
+  }
+
+  div:hover {
+    color: #000;
+  }
+
+  .chosen {
+    color: #000;
+  }
+}
